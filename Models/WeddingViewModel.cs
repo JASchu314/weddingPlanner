@@ -16,6 +16,8 @@ namespace weddingPlanner.Models{
         
         [Required]
          [Display(Name="Date:")]
+         [DataType(DataType.Date)]
+         [CurrentDate(ErrorMessage="Date cannot be in the past!")]
         public DateTime date { get; set; }
         
         [Required]

@@ -17,7 +17,7 @@
     <label asp-for="wedderTwo"></label>
     <input class ="form-control" asp-for="wedderTwo"/><br>
     <label asp-for="date"></label>
-    <input class ="form-control"asp-for="date"/><br>
+    <input class ="form-control"asp-for="date" value="@DateTime.Now.ToString("yyyy-MM-dd")"/><br>
     <label asp-for="wedAddress"></label>
     <input class ="form-control" asp-for="wedAddress"/><br>
     <button type="submit" class="btn btn-primary">Create</button>
