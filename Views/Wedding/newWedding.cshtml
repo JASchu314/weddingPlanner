@@ -1,0 +1,25 @@
+@model weddingPlanner.Models.WeddingViewModel
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="/">Log Out</a></li>
+      <li><a asp-controller="User" asp-action="dash">Dashboard</a></li>
+    </ul>
+  </div>
+</nav>
+<h1>Plan Your Wedding</h1>
+<fieldset>
+    <legend><h2>Add A Wedding</h2></legend>
+    <div asp-validation-summary="All"></div>
+    <form asp-controller="wedding" asp-action="addWedding" method="post">
+    <label asp-for="wedderOne"></label>
+    <input class ="form-control" asp-for="wedderOne"/><br>
+    <label asp-for="wedderTwo"></label>
+    <input class ="form-control" asp-for="wedderTwo"/><br>
+    <label asp-for="date"></label>
+    <input class ="form-control"asp-for="date"/><br>
+    <label asp-for="wedAddress"></label>
+    <input class ="form-control" asp-for="wedAddress"/><br>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+</fieldset>

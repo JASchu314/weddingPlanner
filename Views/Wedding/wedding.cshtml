@@ -1,0 +1,16 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="/">Log Out</a></li>
+      <li><a asp-controller="User" asp-action="dash">Dashboard</a></li>
+    </ul>
+  </div>
+</nav>
+<h1 class="text-primary">@ViewBag.singleWedding.wedderOne and @ViewBag.singleWedding.wedderTwo's wedding</h1>
+<h4 class ="text-danger">Date: @ViewBag.singleWedding.date</h4>
+<h3 class="text-info">Guests:</h3>
+@foreach(var guest in @ViewBag.singleWedding.UserWedding){
+<h5>@guest.User.firstName</h5>
+}
+<h3 class="text-success">Location:</h3>
+<h5>@ViewBag.singleWedding.wedAddress</h5>

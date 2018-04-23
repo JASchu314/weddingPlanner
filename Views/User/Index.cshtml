@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Register";
+}
+@model weddingPlanner.Models.UserViewModel
+
+ 
+<div asp-validation-summary="All"></div>
+@if(TempData["error"] != null){
+    <p>@TempData["error"]</p>
+}
+<div class="form-group">
+<fieldset>
+    <legend><h2>Registration</h2></legend>
+    <form asp-controller="user" asp-action="addUser" method="post">
+    <label asp-for="firstName"></label>
+    <input class ="form-control"asp-for="firstName"/><br>
+    <label asp-for="lastName"></label>
+    <input class="form-control" asp-for="lastName"/><br>
+    <label asp-for="email"></label>
+    <input class="form-control" asp-for="email"/><br>
+    <label asp-for="password"></label>
+    <input class="form-control" asp-for="password"/><br>
+    <label asp-for="passwordCheck"></label>
+    <input class="form-control" asp-for="passwordCheck"/><br>
+    <button type="submit" class="btn btn-primary">Create new User</button>
+</form>
+</fieldset>
+</div>
+@Html.Partial("login")

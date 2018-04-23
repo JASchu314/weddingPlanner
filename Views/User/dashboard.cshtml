@@ -1,0 +1,44 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="/">Log Out</a></li>
+    </ul>
+  </div>
+</nav>
+<h1>Welcome to the Wedding Planner</h1>
+<table class="table table-striped table-bordered">
+    <thead>
+        <th>Wedding</th>
+        <th>Date</th>
+        <th>Guest</th>
+        <th>Action</th>
+    </thead>
+@foreach(Wedding wedding in @ViewBag.allWeddings){
+    <tr>
+          <td><a asp-controller="wedding" asp-action="newWed" asp-route-id="@wedding.weddingId">@wedding.wedderOne and @wedding.wedderTwo</a></td>
+          <td>@wedding.date.ToString("MMM dd, yyyy")</td>
+          <td>@wedding.UserWedding.Count</td>
+          @if(wedding.createdBy == @ViewBag.userId){
+              <td><a asp-controller="wedding" asp-action="delete" asp-route-id="@wedding.weddingId">Delete</a></td>
+          }
+          else{      
+                bool found = false;
+          @foreach(UserWedding plan in @wedding.UserWedding){
+            if(@plan.User != null){
+                if((int) @plan.User.userId == (int)@ViewBag.userId){
+                    found = true;
+                }
+            }
+          }
+            if(!found){
+                <td><a asp-controller="wedding" asp-action="rsvp" asp-route-id="@wedding.weddingId">RSVP</a></td>
+            }
+            else{
+                <td><a asp-controller="wedding" asp-action="unRsvp" asp-route-id="@wedding.weddingId">Un-RSVP</a></td>
+            }
+        }
+    </tr>
+}
+
+</table
+<button><a class="btn btn-primary" role="button" asp-controller="wedding" asp-action="addWeddingLink">New Wedding</a></button>
